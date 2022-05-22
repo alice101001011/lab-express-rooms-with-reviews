@@ -1,0 +1,42 @@
+<div class="container col-md-9">
+
+  <h1>Login</h1>
+
+  <form action="/auth/login" method="post">
+
+    <div class="mb-3">
+      <label for="email">Email</label>
+      <input
+        required
+        type="text"
+        id="email"
+        name="email"
+        placeholder="Please type your email"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="password">Password</label>
+      <input
+        required
+        type="password"
+        id="password"
+        name="password"
+        placeholder="Please type your password"
+      />
+    </div>
+
+    <button type="submit" class="btn btn-sm btn-outline-dark">Log in</button>
+
+    <a href="/">Go back</a>
+
+  </form>
+
+  <div>
+    <p>
+      {{#if errorMessage}}
+        {{errorMessage}}
+      {{/if}}
+    </p>
+  </div>
+
+</div>

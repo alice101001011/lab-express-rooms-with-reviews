@@ -1,0 +1,29 @@
+<h1>Create Room</h1>
+
+<form action="/rooms/create" method="POST">
+
+  <div class="mb-3">
+    <label for="name" class="form-label">Name</label>
+    <input required type="text" class="form-control" id="name" name="name" />
+  </div>
+
+  <div class="mb-3">
+    <label for="description" class="form-label">Description</label>
+    <input
+      type="text"
+      class="form-control"
+      id="description"
+      name="description"
+    />
+  </div>
+
+  <div class="mb-3">
+    <label for="imageUrl" class="form-label">Image URL</label>
+    <input type="text" class="form-control" id="imagenUrl" name="imagenUrl" />
+  </div>
+
+
+  <button type="submit" class="btn btn-dark">Create new room</button>
+  
+</form>
+<a href="/rooms" class="btn btn-dark">Go back</a>

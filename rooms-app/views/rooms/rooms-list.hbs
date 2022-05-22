@@ -1,0 +1,11 @@
+<h1>Rooms</h1>
+
+{{#each rooms}}
+<h2>{{this.name}}</h2>
+<p>{{this.description}}</p>
+<img src="{{this.imageUrl}}" alt="" srcset="">
+<p>{{owner.fullName}}</p>
+<a href="/rooms/{{id}}" type="button" class="btn btn-sm btn-outline-dark">View Details</a>
+{{/each}}
+
+<a href="/rooms/create" type="button" class="btn btn-sm btn-outline-dark">Create new Room</a>

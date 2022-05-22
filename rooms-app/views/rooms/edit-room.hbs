@@ -1,0 +1,33 @@
+<h1>Edit room</h1>
+
+
+<form action="/rooms/{{id}}/edit" method="POST">
+
+  <div class="mb-3">
+    <label for="name" class="form-label">Name</label>
+    <input required type="text" class="form-control" id="name" name="name" value="{{name}}"/>
+  </div>
+
+  <div class="mb-3">
+    <label for="description" class="form-label">Description</label>
+    <input
+      type="text"
+      class="form-control"
+      id="description"
+      name="description"
+      value="{{description}}"
+    />
+  </div>
+
+  <div class="mb-3">
+    <label for="imageUrl" class="form-label">Image URL</label>
+    <input type="text" class="form-control" id="imagenUrl" name="imagenUrl" value="{{imageUrl}}"/>
+  </div>
+
+
+  <button type="submit" type="button" class="btn btn-sm btn-outline-dark">Save changes</button>
+  
+</form>
+<a href='/rooms'>
+  Go back
+</a>

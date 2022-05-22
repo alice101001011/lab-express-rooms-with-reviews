@@ -1,0 +1,51 @@
+<div class="container col-md-9">
+
+  <h1>Signup</h1>
+
+  <form action="/auth/signup" method="post">
+
+    <div class="mb-3">
+      <label for="email">Email</label>
+      <input
+        required
+        type="text"
+        id="email"
+        name="email"
+        placeholder="Please type your email"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="password">Password</label>
+      <input
+        required
+        type="password"
+        id="password"
+        name="password"
+        placeholder="Please type a password"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="fullName">Full name</label>
+      <input
+        required
+        type="fullName"
+        id="fullName"
+        name="fullName"
+        placeholder="Please type your full name"
+      />
+    </div>
+    <button type="submit" class="btn btn-sm btn-outline-dark">Sign up</button>
+
+    <a href="/">Go back</a>
+
+  </form>
+
+  <div>
+    <p>
+      {{#if errorMessage}}
+        {{errorMessage}}
+      {{/if}}
+    </p>
+  </div>
+
+</div>
