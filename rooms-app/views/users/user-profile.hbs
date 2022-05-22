@@ -1,0 +1,39 @@
+<div class="container">
+<h1>Welcome back! This is your user profile</h2>
+<div>
+    <h2>Create a new room</h2>
+    <p>Click the button and create a new room</p>
+<a href="/rooms/create" type="button" class="btn btn-sm btn-outline-dark">Create new Room</a>
+
+</div>
+
+<hr>
+
+<h2>Your rooms</h2>
+
+<div class="rooms-body">
+<div class="card-grid">
+
+  {{#each rooms}}
+    <div class="card">
+      <img src={{this.imageUrl}} class="card-img-top" alt={{this.name}} />
+      <div class="card-body">
+        <h5 class="card-title">{{this.name}}</h5>
+        <p class="card-text"> {{this.description}}</p>
+      </div>
+      <div class="card-links">
+          <div>
+        <a href="/rooms/{{this._id}}/edit" type="button" class="btn btn-sm btn-outline-dark">Edit room</a>
+        </div>
+        <div>
+        <form action="/rooms/{{this._id}}/delete" method="POST">
+          <button class="btn btn-sm btn-outline-dark">Delete room</button>
+        </form>
+        </div>
+      </div>
+    </div>
+  {{/each}}
+  
+</div>
+</div>
+</div>

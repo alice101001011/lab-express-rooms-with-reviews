@@ -1,0 +1,32 @@
+<h1>Edit your review for room {{name}}</h1>
+
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-9">
+
+      <form action="/reviews/{{id}}/edit-review" method="POST">
+
+        <div class="mb-3">
+          <label for="comment" class="form-label">Your review</label>
+          <input
+            required
+            type="text"
+            class="form-control"
+            id="comment"
+            name="comment"
+            value="{{reviews.comment}}"
+          />
+        </div>
+
+        <button type="submit" class="btn btn-sm btn-outline-dark">Save edited
+          review</button>
+
+      </form>
+
+      <a href="/rooms" class="btn btn-sm btn-outline-dark">
+        Go back
+      </a>
+
+    </div>
+  </div>
+</div>

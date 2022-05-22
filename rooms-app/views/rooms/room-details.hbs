@@ -1,13 +1,50 @@
-<h1>Room details</h1>
+<h1>Details for room {{name}}</h1>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-9">
 
 <h3>Name: {{name}}</h3>
 <p>Owner: {{owner.fullName}}</p>
 <p>Description: {{description}}</p>
-
 <img src="{{imageUrl}}" alt="" />
+<hr>
 
-<a href="/rooms/{{_id}}/edit" type="button" class="btn btn-sm btn-outline-dark">Edit room</a>
-<form action="/rooms/{{_id}}/delete" method="POST">
-                <button class="btn btn-sm btn-outline-dark">Delete</button>
-              </form>
-<a href="/rooms">Go back</a>
+<h3>Reviews: </h3>
+
+<ul class="list-group list-group-flush">
+  {{#each reviews}}
+    <li class="list-group-item">
+      <p>{{this.comment}}</p>
+      <p>{{this.user.fullName}}</p>
+
+      {{#if isLoggedIn}}
+      <a
+        href="/reviews/{{this._id}}/edit-review"
+        type="button"
+        class="btn btn-sm btn-outline-dark"
+      >Edit review</a>
+      <form action="/reviews/{{this._id}}/delete-review" method="POST">
+        <button class="btn btn-sm btn-outline-dark">Delete review</button>
+      </form>
+    </li>
+    {{/if}}
+  {{/each}}
+</ul>
+
+{{#if isLoggedIn}}
+<a
+  href="/reviews/{{_id}}/review"
+  type="button"
+  class="btn btn-sm btn-outline-dark"
+>Create review</a>
+{{/if}}
+
+
+<a href="/rooms" class="btn btn-sm btn-outline-dark">Go back</a>
+
+</div>
+
+    </div>
+</div>
+</div>

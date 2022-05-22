@@ -1,11 +1,18 @@
+
+<div class="container">
 <h1>Rooms</h1>
 
-{{#each rooms}}
-<h2>{{this.name}}</h2>
-<p>{{this.description}}</p>
-<img src="{{this.imageUrl}}" alt="" srcset="">
-<p>{{owner.fullName}}</p>
-<a href="/rooms/{{id}}" type="button" class="btn btn-sm btn-outline-dark">View Details</a>
-{{/each}}
-
-<a href="/rooms/create" type="button" class="btn btn-sm btn-outline-dark">Create new Room</a>
+<div class="rooms-body">
+<div class="card-grid">
+  {{#each rooms}}
+    <div class="card">
+      <img src={{this.imageUrl}} class="card-img-top" alt={{this.name}} />
+      <div class="card-body">
+        <h5 class="card-title">{{this.name}}</h5>
+        <a href="/rooms/{{this._id}}" type="button" class="btn btn-sm btn-outline-dark">View Room Details</a>
+      </div>
+    </div>
+  {{/each}}
+</div>
+</div>
+</div>

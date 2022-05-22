@@ -23,9 +23,13 @@ const projectName = "rooms-app";
 
 app.locals.appTitle = `${capitalized(projectName)} created with IronLauncher`;
 
+const isLoggedIn = require("./middleware/isLoggedIn");
+const exposeUser = require("./middleware/exposeUserToViews")
+
 // 👇 Start handling routes here
 const index = require("./routes/index.routes");
-app.use("/", index);
+app.use("/", exposeUser, index);
+
 
 
 

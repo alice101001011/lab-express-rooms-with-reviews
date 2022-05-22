@@ -2,9 +2,7 @@ const router = require("express").Router();
 const Room = require("../models/Room.model");
 const User = require("../models/User.model");
 const Review = require("../models/Review.model");
-const mongoose = require("mongoose");
 const isLoggedIn = require("../middleware/isLoggedIn");
-const isLoggedOut = require("../middleware/isLoggedOut");
 
 // Display list of all rooms, no need to be logged in to view
 
@@ -25,7 +23,8 @@ router.get("/create", isLoggedIn, (req, res, next) => {
 
 router.post("/create", isLoggedIn, async (req, res, next) => {
   try {
-    console.log(req.session);
+    //console.log(req.session);
+    //console.log(req.session.user._id)
     const { name, description, imageUrl } = req.body;
     await Room.create({
       name,
@@ -34,7 +33,7 @@ router.post("/create", isLoggedIn, async (req, res, next) => {
       owner: req.session.user._id,
     });
 
-    res.redirect("/rooms");
+    res.redirect("/profile");
   } catch (error) {
     next(error);
   }
@@ -45,12 +44,12 @@ router.post("/create", isLoggedIn, async (req, res, next) => {
 router.get("/:id/edit", isLoggedIn, async (req, res, next) => {
   try {
     const roomId = req.params.id;
-    console.log(roomId, req.params);
+    //console.log(roomId, req.params);
     const currentUserId = req.session.user._id;
-    console.log(currentUserId);
+    //console.log(currentUserId);
     const room = await Room.findById(roomId);
     const ownerId = room.owner._id.valueOf();
-    console.log(room, ownerId);
+    //console.log(room, ownerId);
 
     if (ownerId !== currentUserId || !ownerId) {
       res.redirect("/rooms"),
@@ -83,7 +82,7 @@ router.post("/:id/edit", isLoggedIn, async (req, res, next) => {
       }
     );
 
-    res.redirect(`/rooms/${roomId}`);
+    res.redirect(`/profile`);
   } catch (error) {
     next(error);
     res.render("rooms");
@@ -119,7 +118,7 @@ router.post("/:id/delete", isLoggedIn, async (req, res, next) => {
 router.get("/:id", async (req, res, next) => {
   try {
     const { id } = req.params;
-    const room = await Room.findById(id).populate("owner");
+    const room = await Room.findById(id).populate("owner").populate("reviews");
     res.render("rooms/room-details", room);
   } catch (error) {
     next(error);

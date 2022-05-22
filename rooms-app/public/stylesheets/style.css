@@ -1,5 +1,5 @@
 body {
-  padding: 50px;
+  padding: 0px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
@@ -8,5 +8,54 @@ a {
 }
 
 h1 {
-  color: 15px;
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+  text-align: center;
+  font-size: 6rem;
+}
+
+h2 {
+  padding-bottom: 3rem;
+}
+
+.card-grid {
+  /* padding: 8rem 6rem; */
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-rows: auto;
+  column-gap: 30px;
+  row-gap: 30px;
+}
+
+.card {
+  border: none;
+  background-color: rgb(255, 255, 255);
+}
+
+.card-body {
+  padding: 2rem;
+  color: white;
+}
+
+.card-img-top {
+  height: 400px;
+  width: auto;
+  object-fit: cover;
+}
+
+.card-title {
+  color: rgb(0, 0, 0);
+  font-size: xx-large;
+}
+
+.card-text {
+  font-weight: 200;
+  color: rgb(0, 0, 0);
+}
+
+.card-links {
+  padding-left: 16px;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
 }

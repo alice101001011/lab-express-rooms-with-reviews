@@ -125,16 +125,16 @@ router.post("/login", isLoggedOut, (req, res, next) => {
 
 // Logout (only for logged in user)
 
-router.get("/logout", isLoggedIn, (req, res) => {
-  req.session.destroy((err) => {
-    if (err) {
-      return res
-        .status(500)
-        .render("auth/logout", { errorMessage: err.message });
-    }
-    res.redirect("/");
-  });
-});
+// router.get("/logout", isLoggedIn, (req, res) => {
+//   req.session.destroy((err) => {
+//     if (err) {
+//       return res
+//         .status(500)
+//         .render("auth/logout", { errorMessage: err.message });
+//     }
+//     res.redirect("/");
+//   });
+// });
 
 router.post("/logout", isLoggedIn, (req, res, next) => {
   req.session.destroy((err) => {

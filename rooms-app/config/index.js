@@ -42,6 +42,7 @@ module.exports = (app) => {
   app.set("views", path.join(__dirname, "..", "views"));
   // Sets the view engine to handlebars
   app.set("view engine", "hbs");
+
   // AHandles access to the public folder
   app.use(express.static(path.join(__dirname, "..", "public")));
 
@@ -60,7 +61,8 @@ module.exports = (app) => {
         maxAge: 1000 * 60 * 60 * 2,
       },
       store: MongoStore.create({
-        mongoUrl: MONGO_URI || "mongodb://localhost/lab-express-rooms-with-reviews",
+        mongoUrl:
+          MONGO_URI || "mongodb://localhost/lab-express-rooms-with-reviews",
         ttl: 60 * 60 * 24 * 7,
       }),
     })
