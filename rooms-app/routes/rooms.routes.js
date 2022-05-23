@@ -90,7 +90,7 @@ router.post("/:id/edit", fileUploader.single('imageUpload'), async (req, res, ne
       }
     );
 
-    res.redirect(`/profile`);
+    res.redirect("/profile");
   } catch (error) {
     next(error);
     res.render("rooms");
@@ -114,7 +114,7 @@ router.post("/:id/delete", isLoggedIn, async (req, res, next) => {
         };
     } else {
       await Room.findByIdAndDelete(roomId);
-      res.redirect("/rooms");
+      res.redirect("/profile");
     }
   } catch (error) {
     next(error);
