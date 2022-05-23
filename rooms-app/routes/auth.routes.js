@@ -53,7 +53,7 @@ router.post("/signup", isLoggedOut, (req, res) => {
       })
       .then((user) => {
         req.session.user = user;
-        res.redirect("/login");
+        res.redirect("/");
       })
       .catch((error) => {
         if (error instanceof mongoose.Error.ValidationError) {

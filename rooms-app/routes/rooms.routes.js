@@ -3,6 +3,7 @@ const Room = require("../models/Room.model");
 const User = require("../models/User.model");
 const Review = require("../models/Review.model");
 const isLoggedIn = require("../middleware/isLoggedIn");
+const fileUploader = require('../config/cloudinary.config');
 
 // Display list of all rooms, no need to be logged in to view
 
@@ -21,7 +22,7 @@ router.get("/create", isLoggedIn, (req, res, next) => {
   res.render("rooms/create-room");
 });
 
-router.post("/create", isLoggedIn, async (req, res, next) => {
+router.post("/create", fileUploader.single('imageUpload'), async (req, res, next) => {
   try {
     //console.log(req.session);
     //console.log(req.session.user._id)
@@ -29,7 +30,7 @@ router.post("/create", isLoggedIn, async (req, res, next) => {
     await Room.create({
       name,
       description,
-      imageUrl,
+      imageUrl: req.file.path,
       owner: req.session.user._id,
     });
 
@@ -65,10 +66,17 @@ router.get("/:id/edit", isLoggedIn, async (req, res, next) => {
   }
 });
 
-router.post("/:id/edit", isLoggedIn, async (req, res, next) => {
+router.post("/:id/edit", fileUploader.single('imageUpload'), async (req, res, next) => {
   try {
     const roomId = req.params.id;
-    const { name, description, imageUrl } = req.body;
+    const { name, description, existingImage } = req.body;
+
+    let imageUrl;
+    if (req.file) {
+        imageUrl = req.file.path;
+      } else {
+        imageUrl = existingImage;
+      }
 
     await Room.findByIdAndUpdate(
       roomId,

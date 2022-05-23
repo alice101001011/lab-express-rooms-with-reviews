@@ -2,7 +2,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-9">
-<form action="/rooms/create" method="POST">
+<form action="/rooms/create" method="POST" enctype="multipart/form-data">
 
   <div class="mb-3">
     <label for="name" class="form-label">Name</label>
@@ -19,9 +19,14 @@
     />
   </div>
 
-  <div class="mb-3">
+  {{!-- <div class="mb-3">
     <label for="imageUrl" class="form-label">Image URL</label>
-    <input type="text" class="form-control" id="imagenUrl" name="imagenUrl" />
+    <input type="text" class="form-control" id="imageUrl" name="imageUrl" />
+  </div> --}}
+
+   <div class="mb-3">
+    <label for="imageUpload" class="form-label">Image Upload</label>
+    <input type="file" class="form-control-file" id="imageUpload" name="imageUpload" />
   </div>
 
 
